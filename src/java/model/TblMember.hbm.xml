@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 6, 2016 11:31:27 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.TblMember" table="tbl_member" catalog="sharephoto" optimistic-lock="version">
+        <id name="idMember" type="int">
+            <column name="id_member" />
+            <generator class="assigned" />
+        </id>
+        <property name="nickname" type="string">
+            <column name="nickname" length="45" />
+        </property>
+        <property name="passwork" type="string">
+            <column name="passwork" length="45" />
+        </property>
+        <property name="fullname" type="string">
+            <column name="fullname" length="45" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="gender" type="string">
+            <column name="gender" length="45" />
+        </property>
+        <property name="accessadmin" type="string">
+            <column name="accessadmin" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

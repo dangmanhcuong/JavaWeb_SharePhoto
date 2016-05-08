@@ -8,6 +8,7 @@
 <struts-config>
     <form-beans>
         <form-bean name="LoginForm" type="com.myapp.struts.LoginForm"/>
+         
     </form-beans>
     
     <global-exceptions>

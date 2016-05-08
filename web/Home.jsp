@@ -58,7 +58,7 @@
                     %>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a ><span class="icon-bar"></span> <%=welcomeMember%></a></li>
+                            <a href="profile.jsp" ><span class="icon-bar"></span> <%=welcomeMember%></a></li>
                         </li>
                         <li style='<%= styleUploadAndLogout%>'>
                             <a href="upload.jsp"><span class="icon-bar"></span> Upload</a></li>

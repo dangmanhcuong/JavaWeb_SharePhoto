@@ -11,33 +11,29 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/style.css">
+
         <title>Login Page</title>
     </head>
     <body>
-        <h1>Login Form</h1> 
-        <html:form action="/Login">
-            <table border="0">
-                <tbody>
-                    <tr>
-                        <td colspan="2">
-                            <bean:write name="LoginForm" property="errorMessage" filter="false"/>
-                            &nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>Enter your Nickname:</td>
-                        <td><html:text property="nickname" /></td>
-                    </tr>
-                    <tr>
-                        <td>Enter your Password: </td>
-                        <td><html:password property="password" /></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><html:submit  value="Login" /></td>
-                    </tr>
-                </tbody>
-            </table>
+        <section>
+            <span></span>
+            <html:form action="/Login">
+                <h1>Member Login</h1>
+                <bean:write name="LoginForm" property="errorMessage" filter="false"/>
+                &nbsp;</td>
+
+            <input  property="nickname" placeholder='User Name' type='text' name="nickname">
+            <input property="password" placeholder='Password' type='password' name="password">
+            <button>Login</button>
         </html:form>
-    </body>
+        <h2 >
+            <a href='forgotpassword.jsp'>Forgot Password?</a>
+            <a href='signup.jsp'>
+                <button  property="signup" style="width: 80px">Sign Up</button>
+            </a>
+        </h2>
+    </section>
+</body>
 </html>

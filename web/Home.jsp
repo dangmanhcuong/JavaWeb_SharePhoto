@@ -32,18 +32,46 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="Home">Home</a></li>
+                        <li ><a href="#">Home</a></li>
                         <li ><a href="#">Photo Hot</a></li>
                         <li><a href="#">New Photo</a></li>
                     </ul>
+                    <%  String welcomeMember = "";
+                        Boolean flagUploadAndLogout = false;
+                        Boolean flagLogin = true;
+                        String styleUploadAndLogout = "visibility: hidden";
+                        String styleLogin = "visibility: visible";
+                        Object object = request.getAttribute("nickname");
+                        if (object != null) {
+                            flagLogin = false;
+                            flagUploadAndLogout = true;
+                            welcomeMember = "Hello "+(String)object;
+                        }
+                        if (flagUploadAndLogout) {
+                            styleUploadAndLogout = "visibility: visible";
+                        }
+                        if (!flagLogin) {
+                            styleLogin = "visibility: hidden";
+                        }
+
+
+                    %>
                     <ul class="nav navbar-nav navbar-right">
-                        <li >
-                            <a href="SignUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                        <li >
+                        <li>
+                            <a ><span class="icon-bar"></span> <%=welcomeMember%></a></li>
+                        </li>
+                        <li style='<%= styleUploadAndLogout%>'>
+                            <a href="upload.jsp"><span class="icon-bar"></span> Upload</a></li>
+                        <li  >
+                            <a href="signup.jsp"><span  class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li style='<%= styleLogin%>'>
                             <a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li style='<%= styleUploadAndLogout%>' >
+                            <a href="Home.jsp"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
                     </ul>
                     <div>
-                        <input type="text" placeholder="Search here..."  style="vertical-align: auto;" required>
+                        <input  type="text" placeholder="Search here..."  style="vertical-align: auto;" required>
                         <input  type="submit" value="Search" name="Search" style="margin:  12px 10px;" />
                     </div>
                 </div>

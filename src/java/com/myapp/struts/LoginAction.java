@@ -45,10 +45,12 @@ public class LoginAction extends org.apache.struts.action.Action {
         // perform validation
         if (nickname.equals("") || password.equals("")) {
             formBean.setErrorMessage("<h1> nickname or passwork null </h1>");
+            formBean.setNickname("");
             return mapping.findForward(FAILURE);
         } else {
             boolean result = loginService.authenticateUser(nickname, password);
             if (result) {
+                request.setAttribute("nickname", nickname);
                 return mapping.findForward(SUCCESS);
             } else {
                 formBean.setErrorMessage("<h1> fail login</h1> <h2> fail login 2 </h2>");

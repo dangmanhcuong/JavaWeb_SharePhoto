@@ -20,10 +20,10 @@
 
     <action-mappings>
         <action name="LoginForm" path="/Login" scope="request" type="com.myapp.struts.LoginAction" validate="false">
-            <forward name="success" path="/index.jsp"/>
+            <forward name="success" path="/Welcome.do"/>
             <forward name="failure" path="/login.jsp"/>
         </action>
-        <action path="/Welcome" forward="/Home.jsp"/>
+        <action name="Home" path="/Welcome" forward="/Home.jsp"/>
     </action-mappings>
     
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>

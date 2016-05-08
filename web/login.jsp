@@ -29,12 +29,12 @@
                         <td><html:text property="nickname" /></td>
                     </tr>
                     <tr>
-                        <td>Enter your Password</td>
-                        <td><html:text property="password" /></td>
+                        <td>Enter your Password: </td>
+                        <td><html:password property="password" /></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><html:submit value="Login" /></td>
+                        <td><html:submit  value="Login" /></td>
                     </tr>
                 </tbody>
             </table>

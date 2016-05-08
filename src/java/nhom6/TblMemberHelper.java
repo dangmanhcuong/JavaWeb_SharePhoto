@@ -21,18 +21,18 @@ public class TblMemberHelper {
         this.session = LoginHibernateUtil1.getSessionFactory().getCurrentSession();
     }
 
-    public TblMember getMemberByNickname(String nickname) {
+    public TblMember getMemberByNickname(String nickname, String passwork) {
 
         TblMember member = null;
 
         try {
             org.hibernate.Transaction tx = session.beginTransaction();
-            Query q = session.createQuery("from TblMember as TblMember  where TblMember.nickname= '" + nickname + "'");
+            Query q = session.createQuery("from TblMember as TblMember  where TblMember.nickname= '" + nickname + "'"+"and TblMember.passwork = '"+passwork+"'");
             member = (TblMember) q.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
+            session.getTransaction().rollback();
         }
-
         return member;
     }
 

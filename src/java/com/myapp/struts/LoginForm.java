@@ -20,9 +20,18 @@ public class LoginForm extends org.apache.struts.action.ActionForm {
     private String nickname;
     private String password;
     private String errorMessage;
+    private String logoutString;
 
     public String getNickname() {
         return nickname;
+    }
+
+    public String getLogoutString() {
+        return logoutString;
+    }
+
+    public void setLogoutString(String logoutString) {
+        this.logoutString = logoutString;
     }
 
     public void setNickname(String nickname) {

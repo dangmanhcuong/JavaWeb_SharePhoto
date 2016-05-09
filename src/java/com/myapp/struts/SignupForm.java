@@ -15,15 +15,45 @@ import org.apache.struts.action.ActionMessage;
  *
  * @author Nagato_Pain
  */
-public class LoginForm extends org.apache.struts.action.ActionForm {
-
+public class SignupForm extends org.apache.struts.action.ActionForm {
+    
+    private String errorMessage;
+    private String firstname;
+    private String lastname;
     private String nickname;
     private String password;
-    private String errorMessage;
-    
+    private String enterthepassword;
+    private String email;
+    private String gender;
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
     public String getNickname() {
         return nickname;
     }
+
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
@@ -36,15 +66,35 @@ public class LoginForm extends org.apache.struts.action.ActionForm {
         this.password = password;
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
+    public String getEnterthepassword() {
+        return enterthepassword;
     }
 
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
+    public void setEnterthepassword(String enterthepassword) {
+        this.enterthepassword = enterthepassword;
     }
 
-    public LoginForm() {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+   
+
+    /**
+     *
+     */
+    public SignupForm() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -60,7 +110,7 @@ public class LoginForm extends org.apache.struts.action.ActionForm {
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
         ActionErrors errors = new ActionErrors();
         if (getNickname() == null || getNickname().length() < 1) {
-            errors.add("nickname", new ActionMessage("error.nickname.required"));
+            errors.add("name", new ActionMessage("error.name.required"));
             // TODO: add 'error.name.required' key to your resources
         }
         return errors;

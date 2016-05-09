@@ -43,6 +43,7 @@ public class LoginAction extends org.apache.struts.action.Action {
         String password = formBean.getPassword();
         LoginService loginService = new LoginService();
         // perform validation
+        if(nickname!=null&&password!=null){
         if (nickname.equals("") || password.equals("")) {
             formBean.setErrorMessage("<h2 style='color: red'> Please fill in nickname and password </h2>");
             formBean.setNickname("");
@@ -58,6 +59,9 @@ public class LoginAction extends org.apache.struts.action.Action {
                 return mapping.findForward(FAILURE);
             }
         }
-
+        }
+        else{
+             return mapping.findForward(FAILURE);
+        }
     }
 }

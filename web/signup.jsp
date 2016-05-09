@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,17 +28,16 @@
                 </h2>       
                 <input  property="nickname" placeholder=' Name Member' type='text' name="nickname">
                 <input property="password" placeholder='Password' type='password' name="password">
-                <input property="password" placeholder='Password' type='password' name="password">
-                <input property="password" placeholder='Password' type='password' name="password">
-                <h2>
-                    <a style="margin-left: auto">gioi tinh</a>
-                    <select style="" name="gioitinh">
-                        <option>nam</option>
-                        <option>nu</option>
-                        <option>other</option>
-                    </select> 
-                </h2>
-
+                <input property="enterthepassword" placeholder='Enter the Password' type='password' name="enterthepassword">
+                <input property="email" placeholder='Email' type='text' name="email">
+                <h1>
+                    <a>Gender </a>
+                    <select property="gender" name="gender">
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>  
+                </h1>
                 <button>Sign Up</button>
             </html:form>
             <h2 >

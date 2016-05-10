@@ -7,6 +7,7 @@ package com.myapp.struts;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import nhom6.SignupService;
 import nhom6.TblMemberHelper;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -37,7 +38,7 @@ public class SignupAction extends org.apache.struts.action.Action {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         SignupForm signupForm = (SignupForm) form;
-        
+
         String errorMessage = signupForm.getErrorMessage();
         String firstname = signupForm.getFirstname();
         String lastname = signupForm.getLastname();
@@ -47,11 +48,15 @@ public class SignupAction extends org.apache.struts.action.Action {
         String email = signupForm.getEmail();
         String gender = signupForm.getGender();
         if (firstname != null && lastname != null && nickname != null && password != null && enterthepassword != null && email != null && gender != null) {
-                
-                signupForm.setErrorMessage(signupForm.getGender());
-                TblMemberHelper helper = new TblMemberHelper();
-                helper.singupMember(signupForm);
+            SignupService signupService = new SignupService();
+            String messageVadidateString = signupService.vadidateSignUp(signupForm);
+            if (messageVadidateString.equals("ok")) {
+                signupService.addMember(signupForm);
                 return mapping.findForward(SUCCESS);
+            } else {
+                signupForm.setErrorMessage(messageVadidateString);
+                return mapping.findForward(FAILURE);
+            }
         } else {
             signupForm.setErrorMessage("Form null");
             return mapping.findForward(FAILURE);

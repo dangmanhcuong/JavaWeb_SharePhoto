@@ -17,6 +17,7 @@ import org.hibernate.Session;
 public class TblMemberHelper {
 
     Session session = null;
+    org.hibernate.Transaction tx = null;
 
     public TblMemberHelper() {
         this.session = LoginHibernateUtil1.getSessionFactory().getCurrentSession();
@@ -30,6 +31,7 @@ public class TblMemberHelper {
             org.hibernate.Transaction tx = session.beginTransaction();
             Query q = session.createQuery("from TblMember as TblMember  where TblMember.nickname= '" + nickname + "'" + "and TblMember.passwork = '" + passwork + "'");
             member = (TblMember) q.uniqueResult();
+           
         } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
@@ -38,15 +40,16 @@ public class TblMemberHelper {
     }
 
     public void singupMember(SignupForm infoMember) {
-         try {
-            org.hibernate.Transaction tx = session.beginTransaction();
-            TblMember newMember = new TblMember(infoMember.getNickname(),infoMember.getPassword(),infoMember.getLastname()+" "+ infoMember.getFirstname(),infoMember.getEmail(),infoMember.getGender(),"false");
+        try {
+            tx = session.beginTransaction();
+            TblMember newMember = new TblMember(infoMember.getNickname(), infoMember.getPassword(), infoMember.getLastname() + " " + infoMember.getFirstname(), infoMember.getEmail(), infoMember.getGender(), "false");
             session.save(newMember);
             session.flush();
             tx.commit();
+
         } catch (Exception e) {
             e.printStackTrace();
-            session.getTransaction().rollback();
+            tx.rollback();
         }
     }
 

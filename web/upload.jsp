@@ -9,9 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+
+        <title>JSP Page UpLoad</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-    </body>
+        <s:actionerror />
+        <s:form action="userImage" method="post" enctype="multipart/form-data">
+            <s:file name="userImage" label="User Image" />
+            <s:submit value="Upload" align="center" />
+        </s:form>
+</body>
 </html>

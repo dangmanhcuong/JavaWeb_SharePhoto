@@ -20,7 +20,7 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <nav class="navbar navbar-inverse">
+        <nav  id="HeaderBar" class="navbar navbar-inverse" style=" width: 100% ; position: fixed;">
             <div class="container-fluid" >
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -85,7 +85,31 @@
                     <p>In this example, the navigation bar is hidden on small screens and replaced by a button in the top right corner (try to re-size this window).
                     <p>Only when the button is clicked, the navigation bar will be displayed.</p>
                 </div>-->
-        <ul id="myList">
+        <ul id="myList" style="padding-top: 100px">
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+            <li>Four</li>
+            <li>Five</li>
+            <li>Six</li>
+            <li>Seven</li>
+            <li>Eight</li>
+            <li>Nine</li>
+            <li>Ten</li>
+            <li>Eleven</li>
+            <li>Twelve</li>
+            <li>Thirteen</li>
+            <li>Fourteen</li>
+            <li>Fifteen</li>
+            <li>Sixteen</li>
+            <li>Seventeen</li>
+            <li>Eighteen</li>
+            <li>Nineteen</li>
+            <li>Twenty one</li>
+            <li>Twenty two</li>
+            <li>Twenty three</li>
+            <li>Twenty four</li>
+            <li>Twenty five</li>
             <li>One</li>
             <li>Two</li>
             <li>Three</li>

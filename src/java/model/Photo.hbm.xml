@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 10, 2016 4:33:10 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Photo" table="photo" catalog="sharephoto" optimistic-lock="version">
+        <id name="idPhoto" type="java.lang.Integer">
+            <column name="id_photo" />
+            <generator class="identity" />
+        </id>
+        <property name="idMember" type="java.lang.Integer">
+            <column name="id_member" />
+        </property>
+        <property name="title" type="string">
+            <column name="title" length="45" />
+        </property>
+        <property name="topic" type="string">
+            <column name="topic" length="45" />
+        </property>
+        <property name="totalView" type="java.lang.Integer">
+            <column name="total_view" />
+        </property>
+        <property name="totalLike" type="java.lang.Integer">
+            <column name="total_like" />
+        </property>
+        <property name="photoSrc" type="binary">
+            <column name="photo_src" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -11,5 +11,6 @@
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory</property>
     <mapping resource="model/TblMember.hbm.xml"/>
+    <mapping resource="model/Photo.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

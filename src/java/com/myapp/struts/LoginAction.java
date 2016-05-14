@@ -7,6 +7,7 @@ package com.myapp.struts;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import nhom6.LoginService;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -43,25 +44,27 @@ public class LoginAction extends org.apache.struts.action.Action {
         String password = formBean.getPassword();
         LoginService loginService = new LoginService();
         // perform validation
-        if(nickname!=null&&password!=null){
-        if (nickname.equals("") || password.equals("")) {
-            formBean.setErrorMessage("<h2 style='color: red'> Please fill in nickname and password </h2>");
-            formBean.setNickname("");
-            return mapping.findForward(FAILURE);
-        } else {
-            formBean.setErrorMessage("<h2 style='color: red'> OK! Please wait...  </h2>");
-            boolean result = loginService.authenticateUser(nickname, password);
-            if (result) {
-                request.setAttribute("nickname", nickname);
-                return mapping.findForward(SUCCESS);
-            } else {
-                formBean.setErrorMessage("<h2 style='color: red'> Nickname and password you entered did not match  </h2>");
+        if (nickname != null && password != null) {
+            if (nickname.equals("") || password.equals("")) {
+                formBean.setErrorMessage("<h2 style='color: red'> Please fill in nickname and password </h2>");
+                formBean.setNickname("");
                 return mapping.findForward(FAILURE);
+            } else {
+                formBean.setErrorMessage("<h2 style='color: red'> OK! Please wait...  </h2>");
+                boolean result = loginService.authenticateUser(nickname, password);
+                if (result) {
+                    HttpSession sess = request.getSession();
+                    sess.setAttribute("nickname", nickname);
+                    sess.setAttribute("password", password);
+                    request.setAttribute("nickname", nickname);
+                    return mapping.findForward(SUCCESS);
+                } else {
+                    formBean.setErrorMessage("<h2 style='color: red'> Nickname and password you entered did not match  </h2>");
+                    return mapping.findForward(FAILURE);
+                }
             }
-        }
-        }
-        else{
-             return mapping.findForward(FAILURE);
+        } else {
+            return mapping.findForward(FAILURE);
         }
     }
 }

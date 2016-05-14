@@ -22,17 +22,17 @@ public class PhotoHelper {
         this.session = LoginHibernateUtil1.getSessionFactory().getCurrentSession();
     }
 
-    public void uploadPhoto() {
+    public boolean uploadPhoto(Photo photo) {
         try {
             org.hibernate.Transaction tx = session.beginTransaction();
-            Photo photo = new Photo();
             session.save(photo);
             tx.commit();
-            session.flush();
-
+          //  session.flush();
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
             // tx.rollback();
+            return false;
         }
     }
 }

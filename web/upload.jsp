@@ -18,35 +18,57 @@
     <body>
     <center>
         <h1>File Upload to Database </h1>
-        <html:form  method="post" action="/Upload" enctype="multipart/form-data">
-            <bean:write name="UploadActionForm" property="errorMessage" filter="false"/>
-            &nbsp;</td>
-        <table border="0">
-            <tr>
-                <td>Title: </td>
-                <td><input property="title" type="text" name="Title" size="50" value=""/></td>
-            </tr>
-            <tr>
-                <td>Topic: </td>
-                <td><input property="topic" type="text" name="Topic" size="50" value=""/></td>
-            </tr>
-            <tr>
-                <td>Portrait Photo: </td>
-                <td><input property="photofile" type="file" name="photo" size="50" value=""/></td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="submit" value="Upload">
-                </td>
-            </tr>
-        </table>
-    </html:form>
-    <form action="uploadtest" method="post" enctype="multipart/form-data">
-        <input type="text" name="description" />
-        <input type="file" name="file" />
-        <input type="submit" />
-    </form>
-</center>
+        <%
+            String user = "no member";
+            String status="";
+            HttpSession sess = request.getSession(false); //use false to use the existing session
+            Object testObject = sess.getAttribute("nickname");//this will return username anytime in the session
+            Object object = request.getAttribute("status");
+            if (testObject != null) {
+                user = (String) testObject;
+            }
+            if(object!=null){
+                status =(String)object;
+            }
+        %>
+        <form   method="POST" action="Upload" enctype="multipart/form-data">
+            <input type="text" value="<%= status%>">
+            <table border="0">
+                <tr>
+                    <td>User: </td>
+                    <td><input property="user" type="text" name="user" size="50" value="<%=user%>"/></td>
+                </tr>
+                <tr>
+                    <td>Title: </td>
+                    <td><input property="title" type="text" name="title" size="50" value=""/></td>
+                </tr>
+                <tr>
+                    <td>Topic:  </td>
+                    <td >
+                        <select property="topic" name="topic">
+                            <option>Linh tinh</option>
+                            <option> Other </option>
+                        </select> </td> 
+                    </td>  
+
+                </tr>
+                <tr>
+                    <td>Portrait Photo: </td>
+                    <td><input property="photofile" type="file" name="photo" size="50" value=""/></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Upload">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <!--    <form action="uploadtest" method="post" enctype="multipart/form-data">
+                <input type="text" name="description" />
+                <input type="file" name="file" />
+                <input type="submit" />
+            </form>-->
+    </center>
 
 </body>
 </html>

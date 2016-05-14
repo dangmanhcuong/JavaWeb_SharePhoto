@@ -7,7 +7,6 @@
 
 <struts-config>
     <form-beans>
-        <form-bean name="UploadActionForm" type="com.myapp.struts.UploadActionForm"/>
         <form-bean name="SignupForm" type="com.myapp.struts.SignupForm"/>
         <form-bean name="LoginForm" type="com.myapp.struts.LoginForm"/>
          
@@ -29,9 +28,6 @@
         <action name="SignupForm" path="/Signup" scope="request" type="com.myapp.struts.SignupAction" validate="false">
             <forward name="failure" path="/signup.jsp"/>
              <forward name="success" path="/Welcome.do"/>
-        </action>
-        <action name="UploadActionForm" path="/Upload" scope="request" type="com.myapp.struts.UploadAction" validate="false">
-             <forward name="success" path="/upload.jsp"/>
         </action>
         <action name="Home" path="/Welcome" forward="/Home.jsp"/>
         

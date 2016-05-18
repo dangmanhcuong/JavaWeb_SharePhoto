@@ -31,10 +31,12 @@ public class SignupService {
         } else if (!infoSignupForm.getEmail().contains("@")) {
             return "Improperly formatted email";
         } else //helper = new TblMemberHelper();
-        if (!helper.checkMember(infoSignupForm.getNickname())) {
-            return "Member name already exists";
-        } else {
-            return "ok";
+        {
+            if (!helper.checkMember(infoSignupForm.getNickname())) {
+                return "Member name already exists";
+            } else {
+                return "ok";
+            }
         }
 
     }

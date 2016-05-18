@@ -26,6 +26,7 @@ public class PhotoHelper {
         try {
             org.hibernate.Transaction tx = session.beginTransaction();
             session.save(photo);
+            session.flush();
             tx.commit();
           //  session.flush();
             return true;

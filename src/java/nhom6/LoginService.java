@@ -20,7 +20,12 @@ public class LoginService {
     }
 
     public boolean authenticateUser(String nickname, String password) {
-        TblMember member = helper.getMemberByNickname(nickname,password);
+        TblMember member = helper.getMemberByNickname(nickname, password);
         return member != null;
+    }
+
+    public TblMember getMember(String nickname, String password) {
+        TblMember member = helper.getMemberByNickname(nickname, password);
+        return member;
     }
 }

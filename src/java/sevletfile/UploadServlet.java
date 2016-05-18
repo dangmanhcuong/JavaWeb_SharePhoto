@@ -39,6 +39,12 @@ public class UploadServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //get title photo
+        String title = request.getParameter("title");
+        if (title == null || title.equals("")) {
+            request.setAttribute("status", "Plese fill title");
+            request.getRequestDispatcher("/upload.jsp").forward(request, response);
+        }
         //
         Part photo = request.getPart("photo");
         String status = "file null";
@@ -61,8 +67,19 @@ public class UploadServlet extends HttpServlet {
                 }
                 byte[] data = buffer.toByteArray();
                 buffer.flush();
-                //
+                //add photo to object add data
                 photo1.setPhotoSrc(data);
+                //get topic form form jsp
+                String topic = request.getParameter("topic");
+                photo1.setTopic(topic);
+                photo1.setTitle(title);
+                Object object = request.getSession(false).getAttribute("idmember");
+                if (object != null) {
+                    photo1.setIdMember((Integer) object);
+                } else {
+                    photo1.setIdMember(69);
+                }
+
                 if (helper.uploadPhoto(photo1)) {
                     request.setAttribute("status", " upload  ok ");
                     request.getRequestDispatcher("/upload.jsp").forward(request, response);
@@ -70,7 +87,6 @@ public class UploadServlet extends HttpServlet {
                     request.setAttribute("status", " upload  fail when connect database ");
                     request.getRequestDispatcher("/upload.jsp").forward(request, response);
                 }
-
             } catch (Exception e) {
                 request.setAttribute("status", " upload fail ex ");
                 request.getRequestDispatcher("/upload.jsp").forward(request, response);

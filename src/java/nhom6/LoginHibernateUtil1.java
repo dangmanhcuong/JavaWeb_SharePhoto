@@ -31,6 +31,11 @@ public class LoginHibernateUtil1 {
     }
     
     public static SessionFactory getSessionFactory() {
+        if(sessionFactory.isClosed())
+    {
+        System.out.println("Reopen session");
+        sessionFactory.openSession();
+    }
         return sessionFactory;
     }
 }

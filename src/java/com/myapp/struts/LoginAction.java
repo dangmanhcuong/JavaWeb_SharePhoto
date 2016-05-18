@@ -8,6 +8,7 @@ package com.myapp.struts;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.TblMember;
 import nhom6.LoginService;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -51,11 +52,13 @@ public class LoginAction extends org.apache.struts.action.Action {
                 return mapping.findForward(FAILURE);
             } else {
                 formBean.setErrorMessage("<h2 style='color: red'> OK! Please wait...  </h2>");
-                boolean result = loginService.authenticateUser(nickname, password);
-                if (result) {
+                //boolean result = loginService.authenticateUser(nickname, password);
+                TblMember member = loginService.getMember(nickname, password);
+                if (member!=null) {
                     HttpSession sess = request.getSession();
                     sess.setAttribute("nickname", nickname);
                     sess.setAttribute("password", password);
+                    sess.setAttribute("idmember", member.getIdMember());
                     request.setAttribute("nickname", nickname);
                     return mapping.findForward(SUCCESS);
                 } else {

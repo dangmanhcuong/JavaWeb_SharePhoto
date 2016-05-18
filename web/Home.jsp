@@ -93,10 +93,13 @@
                             <a href="Home.jsp"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 
                     </ul>
-                    <div>
-                        <input  type="text" placeholder="Search here..."  style="vertical-align: auto;" required>
-                        <input  type="submit" value="Search" name="Search" style="margin:  12px 10px;" />
-                    </div>
+                    
+                        <div>
+                            <input  type="text" placeholder="Search here..."  style="vertical-align: auto;" required>
+                            <input  type="submit" value="Search" name="Search" style="margin:  12px 10px;" />
+                        </div>
+                   
+
                 </div>
 
             </div>

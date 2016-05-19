@@ -22,9 +22,9 @@
             <html:form action="/Login">
                 <h1>Member Login</h1>
                 <bean:write name="LoginForm" property="errorMessage" filter="false"/>
-                &nbsp;</td>
+                &nbsp;
 
-            <input  property="nickname" placeholder='User Name' type='text' name="nickname">
+        <input  property="nickname"  value="" placeholder='User Name' type='text' name="nickname">
             <input property="password" placeholder='Password' type='password' name="password">
             <button>Login</button>
         </html:form>

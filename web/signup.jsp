@@ -21,7 +21,7 @@
             <html:form action="/Signup">
                 <h1>Sign Up Member </h1>
                 <bean:write name="SignupForm" property="errorMessage" filter="false"/>
-                &nbsp;</td>
+                &nbsp;
                 <h2>
                     <input style="width: 105px"property="firstname" placeholder=' First Name' type='text' name="firstname">
                     <input style="width: 105px" property="lastname" placeholder='Last Name' type='text' name="lastname">

@@ -7,7 +7,9 @@
 
 <struts-config>
     <form-beans>
-        
+        <form-bean name="ProfileActionForm" type="com.myapp.struts.ProfileActionForm"/>
+        <form-bean name="Home" type="com.myapp.struts.Home"/> 
+<!--        <form-bean name="HomeForm" type="com.myapp.struts.HomeForm"/>       -->
         <form-bean name="SignupForm" type="com.myapp.struts.SignupForm"/>
         <form-bean name="LoginForm" type="com.myapp.struts.LoginForm"/>
          
@@ -30,10 +32,15 @@
             <forward name="failure" path="/signup.jsp"/>
              <forward name="success" path="/Welcome.do"/>
         </action>
-        <action name="Home" path="/Welcome" scope="request" type="com.myapp.struts.HomeAction">
+        <action name="Home" path="/Welcome" scope="request" type="com.myapp.struts.HomeAction" validate="false" >
             <forward name="success" path="/Home.jsp"/>
+             <forward name="failure" path="/login.jsp"/>
+             <forward name="default" path="/signup.jsp"/>
         </action>
-        
+        <action name="ProfileActionForm" path="/Profile" scope="request" type="com.myapp.struts.ProfileAction" validate="false">
+            <forward name="success" path="/profile.jsp"/>
+             <forward name="failure" path="/Login.do"/>
+        </action>
     </action-mappings>
     
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>

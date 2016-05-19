@@ -1,5 +1,5 @@
 package model;
-// Generated May 10, 2016 4:33:10 PM by Hibernate Tools 4.3.1
+// Generated May 19, 2016 12:42:36 PM by Hibernate Tools 4.3.1
 
 
 
@@ -16,18 +16,19 @@ public class Photo  implements java.io.Serializable {
      private Integer totalView;
      private Integer totalLike;
      private byte[] photoSrc;
+     private String timeUpload;
 
     public Photo() {
-       this.title = "test";
     }
 
-    public Photo(Integer idMember, String title, String topic, Integer totalView, Integer totalLike, byte[] photoSrc) {
+    public Photo(Integer idMember, String title, String topic, Integer totalView, Integer totalLike, byte[] photoSrc, String timeUpload) {
        this.idMember = idMember;
        this.title = title;
        this.topic = topic;
        this.totalView = totalView;
        this.totalLike = totalLike;
        this.photoSrc = photoSrc;
+       this.timeUpload = timeUpload;
     }
    
     public Integer getIdPhoto() {
@@ -78,6 +79,13 @@ public class Photo  implements java.io.Serializable {
     
     public void setPhotoSrc(byte[] photoSrc) {
         this.photoSrc = photoSrc;
+    }
+    public String getTimeUpload() {
+        return this.timeUpload;
+    }
+    
+    public void setTimeUpload(String timeUpload) {
+        this.timeUpload = timeUpload;
     }
 
 

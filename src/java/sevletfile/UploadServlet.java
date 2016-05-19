@@ -5,10 +5,11 @@
  */
 package sevletfile;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -79,7 +80,8 @@ public class UploadServlet extends HttpServlet {
                 } else {
                     photo1.setIdMember(69);
                 }
-
+                    String timeStamp = new SimpleDateFormat("yyyy/MM/dd-HH:mm:ss").format(Calendar.getInstance().getTime());
+                    photo1.setTimeUpload(timeStamp);
                 if (helper.uploadPhoto(photo1)) {
                     request.setAttribute("status", " upload  ok ");
                     request.getRequestDispatcher("/upload.jsp").forward(request, response);

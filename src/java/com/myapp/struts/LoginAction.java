@@ -59,7 +59,9 @@ public class LoginAction extends org.apache.struts.action.Action {
                     sess.setAttribute("nickname", nickname);
                     sess.setAttribute("password", password);
                     sess.setAttribute("idmember", member.getIdMember());
+                    sess.setAttribute("member", member);
                     request.setAttribute("nickname", nickname);
+                    sess.setAttribute("fullname", member.getFullname());
                     return mapping.findForward(SUCCESS);
                 } else {
                     formBean.setErrorMessage("<h2 style='color: red'> Nickname and password you entered did not match  </h2>");

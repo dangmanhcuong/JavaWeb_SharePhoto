@@ -1,5 +1,5 @@
 package model;
-// Generated May 10, 2016 4:33:10 PM by Hibernate Tools 4.3.1
+// Generated May 19, 2016 12:42:36 PM by Hibernate Tools 4.3.1
 
 
 

@@ -5,9 +5,9 @@
  */
 package nhom6;
 
-import com.myapp.struts.SignupForm;
+import java.util.ArrayList;
 import model.Photo;
-import model.TblMember;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -28,12 +28,31 @@ public class PhotoHelper {
             session.save(photo);
             session.flush();
             tx.commit();
-          //  session.flush();
+            //  session.flush();
             return true;
         } catch (Exception e) {
             e.printStackTrace();
             // tx.rollback();
             return false;
         }
+    }
+
+    public ArrayList<Photo> getListPhoto() {
+        ArrayList<Photo> listPhoto = new ArrayList<>();
+        //query database
+        try {
+            org.hibernate.Transaction tx = session.beginTransaction();
+            Query q = session.createQuery("from Photo as Photo ");
+            listPhoto = (ArrayList<Photo>) q.list();
+            //session.flush();
+            //tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            //session.beginTransaction().rollback();
+            //session.close();
+        } finally {
+            //
+        }
+        return listPhoto;
     }
 }

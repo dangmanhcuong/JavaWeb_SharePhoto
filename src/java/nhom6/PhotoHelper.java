@@ -24,10 +24,19 @@ public class PhotoHelper {
 
     public boolean uploadPhoto(Photo photo) {
         try {
-            org.hibernate.Transaction tx = session.beginTransaction();
+            //org.hibernate.Transaction tx = session.beginTransaction();
+              org.hibernate.Transaction txD;
+            //
+            if (session.getTransaction() != null
+                    && session.getTransaction().isActive()) {
+                txD = session.getTransaction();
+            } else {
+                txD = session.beginTransaction();
+            }
+            //
             session.save(photo);
             session.flush();
-            tx.commit();
+            txD.commit();
             //  session.flush();
             return true;
         } catch (Exception e) {
@@ -43,6 +52,24 @@ public class PhotoHelper {
         try {
             org.hibernate.Transaction tx = session.beginTransaction();
             Query q = session.createQuery("from Photo as Photo ");
+            listPhoto = (ArrayList<Photo>) q.list();
+            //session.flush();
+            //tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            //session.beginTransaction().rollback();
+            //session.close();
+        } finally {
+            //
+        }
+        return listPhoto;
+    }
+    public ArrayList<Photo> getListPhotoByMember(Integer idMember){
+        ArrayList<Photo> listPhoto = new ArrayList<>();
+         //query database
+        try {
+            org.hibernate.Transaction tx = session.beginTransaction();
+            Query q = session.createQuery("from Photo as Photo where Photo.idMember ='"+idMember+"'");
             listPhoto = (ArrayList<Photo>) q.list();
             //session.flush();
             //tx.commit();

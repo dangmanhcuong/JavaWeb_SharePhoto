@@ -44,6 +44,7 @@ public class ProfileAction extends org.apache.struts.action.Action {
         //
         String fullname = "";
         String nickname = "";
+        Integer idMember = 0;
         Object object = request.getSession(false).getAttribute("nickname");
         if (object != null) {
             nickname = (String) object;
@@ -53,6 +54,10 @@ public class ProfileAction extends org.apache.struts.action.Action {
         if (object != null) {
             fullname = (String) object2;
         }
+         Object object3 = request.getSession(false).getAttribute("idmember");
+        if (object3 != null) {
+            idMember = (Integer) object3;
+        }
         //
         if (!fullname.equals("") && !nickname.equals("")) {
             profileActionForm.setFullname(fullname);
@@ -60,8 +65,9 @@ public class ProfileAction extends org.apache.struts.action.Action {
             //get photo
             PhotoHelper photoHelper = new PhotoHelper();
             ArrayList<Photo> listPhoto = new ArrayList<>();
-            listPhoto = photoHelper.getListPhoto();
-            request.setAttribute("photo", listPhoto.get(0));
+            try{
+            listPhoto = photoHelper.getListPhotoByMember(idMember);
+            //request.setAttribute("photo", listPhoto.get(0));
             byte[] a = listPhoto.get(0).getPhotoSrc();
              byte[] a1 = listPhoto.get(1).getPhotoSrc();
               byte[] a2 = listPhoto.get(2).getPhotoSrc();
@@ -69,7 +75,13 @@ public class ProfileAction extends org.apache.struts.action.Action {
             String value = new String(a, "UTF-8");
             //
              profileActionForm.setImgSrc(value);
+             profileActionForm.setStatusMessage(" have "+listPhoto.size()+" Photo! @@ ");
             return mapping.findForward(SUCCESS);
+            }
+            catch(Exception e){
+                profileActionForm.setStatusMessage(" have 0 Photo! @@ ");
+                return mapping.findForward(SUCCESS);
+            }
         } else {
 
             return mapping.findForward(FAILURE);
